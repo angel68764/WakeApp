@@ -1,43 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="20dp"
-    android:paddingLeft="20dp"
-    android:paddingRight="20dp"
-    android:paddingTop="20dp"
     tools:context=".AlarmActivity"
+    android:id="@+id/container"
     android:orientation="vertical">
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/buttonPanel"
-        />
-
     <TextView
+        android:id="@+id/alarmListTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/alarmListTitle"
-        android:text="Lista de alarmas"
         android:layout_marginTop="10dp"
         android:gravity="center"
-        android:textSize="20dp"/>
+        android:text="Lista de alarmas"
+        android:textSize="20dp" />
+
 
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_marginTop="10dp"
         android:id="@+id/recyclerAlarmList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:scrollbars="vertical"/>
+        android:layout_below="@+id/alarmListTitle"
+        android:paddingBottom="20dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingTop="20dp"
+        android:layout_marginTop="10dp"
+        android:scrollbars="vertical" />
+
+
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_nav"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?android:attr/windowBackground"
         app:menu="@menu/nav_menu"
+        android:layout_alignParentBottom="true"
         />
 
-</LinearLayout>
+
+
+
+</RelativeLayout>

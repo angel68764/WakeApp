@@ -1,35 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
-    android:orientation="vertical"
-    tools:context="com.google.codelabs.mdc.java.wakeapp.ChronoActivity">
+    tools:context=".ChronoActivity">
 
     <Chronometer
         android:id="@+id/chronometer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
         android:textSize="30sp" />
 
     <Button
+        android:id="@+id/startChrono"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="startChronometer"
+        android:layout_below="@+id/chronometer"
+        android:layout_centerInParent="true"
         android:text="Start" />
 
     <Button
+        android:id="@+id/pauseChrono"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="pauseChronometer"
+        android:layout_below="@+id/startChrono"
+        android:layout_centerInParent="true"
         android:text="Pause" />
 
     <Button
+        android:id="@+id/resetChrono"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="resetChronometer"
+        android:layout_below="@+id/pauseChrono"
+        android:layout_centerInParent="true"
         android:text="Reset" />
 
-</LinearLayout>
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_nav"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:menu="@menu/nav_menu"
+        android:layout_alignParentBottom="true"
+        />
+
+</RelativeLayout>
