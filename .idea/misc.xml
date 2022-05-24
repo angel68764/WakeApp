@@ -3,9 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/angel/AndroidStudioProjects/WakeApp/app/src/main/res/layout/activity_alarm.xml" value="0.1" />
+        <entry key="..\:/Users/angel/AndroidStudioProjects/WakeApp/app/src/main/res/layout/activity_alarm.xml" value="0.25" />
         <entry key="..\:/Users/angel/AndroidStudioProjects/WakeApp/app/src/main/res/layout/activity_chrono.xml" value="0.358695652173913" />
-        <entry key="..\:/Users/angel/AndroidStudioProjects/WakeApp/app/src/main/res/layout/alarm_list.xml" value="0.358695652173913" />
+        <entry key="..\:/Users/angel/AndroidStudioProjects/WakeApp/app/src/main/res/layout/activity_new_alarm.xml" value="0.358695652173913" />
+        <entry key="..\:/Users/angel/AndroidStudioProjects/WakeApp/app/src/main/res/layout/alarm_list.xml" value="0.33" />
+        <entry key="..\:/Users/angel/AndroidStudioProjects/WakeApp/app/src/main/res/menu/alarm_menu.xml" value="0.5" />
+        <entry key="..\:/Users/angel/AndroidStudioProjects/WakeApp/app/src/main/res/menu/nav_menu.xml" value="0.14722222222222223" />
+        <entry key="..\:/Users/angel/AndroidStudioProjects/WakeApp/app/src/main/res/menu/new_alarm_menu.xml" value="0.33" />
       </map>
     </option>
   </component>
