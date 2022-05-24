@@ -74,12 +74,14 @@ public class ChronoActivity extends AppCompatActivity {
         chronometer.setBase(SystemClock.elapsedRealtime());
         View restore = findViewById(R.id.button3);
         restore.setVisibility(View.INVISIBLE);
-
         View startButton = findViewById(R.id.button);
         startButton.setVisibility(View.VISIBLE);
+        View pausebutton = findViewById(R.id.button2);
+        pausebutton.setVisibility(View.INVISIBLE);
+
         chronometer.stop();
         running = false;
         started = false;
-        pauseOffset = 0;
+        pauseOffset = SystemClock.elapsedRealtime() - chronometer.getBase();
     }
 }
