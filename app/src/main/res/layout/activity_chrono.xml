@@ -5,21 +5,20 @@
     android:id="@+id/linearLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_gravity="center"
     android:background="@drawable/gradient"
     tools:context="com.google.codelabs.mdc.java.wakeapp.ChronoActivity">
-    tools:context=".ChronoActivity">
 
     <Chronometer
         android:id="@+id/chronometer"
         android:layout_width="200dp"
         android:layout_height="200dp"
-        android:layout_marginTop="217dp"
-        android:layout_marginBottom="85dp"
+        android:layout_marginTop="176dp"
         android:background="@drawable/ring"
         android:gravity="center"
         android:textSize="40sp"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -27,50 +26,17 @@
         android:id="@+id/linearLayout2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="76dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/chronometer"
-        app:layout_constraintTop_toBottomOf="@+id/chronometer">
+        android:layout_marginStart="180dp"
+        app:layout_constraintBottom_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <FrameLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
 
-            <ImageButton
-                android:id="@+id/button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:backgroundTint="#b6ffff"
-                android:baselineAligned="false"
-                android:onClick="startChronometer"
-                android:src="@drawable/play"
-                app:layout_constraintStart_toStartOf="@+id/button2"
-                app:layout_constraintTop_toTopOf="@+id/button2" />
-
-            <ImageButton
-                android:id="@+id/button2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:backgroundTint="#b6ffff"
-                android:onClick="pauseChronometer"
-                android:src="@drawable/pause"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/button3" />
         </FrameLayout>
-
-        <ImageButton
-            android:id="@+id/button3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="47dp"
-            android:layout_marginBottom="69dp"
-            android:backgroundTint="#b6ffff"
-            android:onClick="resetChronometer"
-            android:src="@drawable/restore"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/button2" />
 
 
     </LinearLayout>
@@ -80,9 +46,43 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         app:menu="@menu/nav_menu" />
+
+    <ImageButton
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:backgroundTint="#b6ffff"
+        android:onClick="resetChronometer"
+        android:src="@drawable/restore"
+        app:layout_constraintStart_toEndOf="@+id/button2"
+        app:layout_constraintTop_toTopOf="@+id/button2" />
+
+    <ImageButton
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:backgroundTint="#b6ffff"
+        android:onClick="pauseChronometer"
+        android:src="@drawable/pause"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_nav"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageButton
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#b6ffff"
+        android:baselineAligned="false"
+        android:onClick="startChronometer"
+        android:src="@drawable/play"
+        app:layout_constraintStart_toStartOf="@+id/button2"
+        app:layout_constraintTop_toTopOf="@+id/button2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
