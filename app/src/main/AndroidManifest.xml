@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.google.codelabs.mdc.java.wakeapp">
 
+    <uses-permission android:name="android.permission.VIBRATE" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -14,9 +16,33 @@
         android:theme="@style/Theme.WakeApp"
         tools:targetApi="31">
         <activity
+            android:name=".RepeatActivity"
+            android:exported="false" />
+
+        <receiver
+            android:name=".AlarmReceiver"
+            android:directBootAware="true"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.LOCKED_BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name=".AlarmService"
+            android:enabled="true"
+            android:exported="false"
+            android:process=":remote" />
+
+        <activity
+            android:name=".SnoozeActivity"
+            android:exported="false" />
+        <activity
             android:name=".NewAlarmActivity"
             android:exported="false"
-            android:parentActivityName=".AlarmActivity"/>
+            android:parentActivityName=".AlarmActivity" />
         <activity
             android:name=".ChronoActivity"
             android:exported="false" />
