@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".AlarmActivity"
     android:id="@+id/container"
+    android:background="@drawable/gradient"
     android:orientation="vertical">
 
     <TextView
@@ -13,9 +14,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:gravity="center"
+        android:layout_marginLeft="10dp"
         android:text="Lista de alarmas"
-        android:textSize="20dp" />
+        android:textSize="40dp" />
 
 
     <androidx.recyclerview.widget.RecyclerView
@@ -23,11 +24,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/alarmListTitle"
-        android:paddingBottom="20dp"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp"
-        android:paddingTop="20dp"
         android:layout_marginTop="10dp"
+        android:paddingLeft="20dp"
+        android:paddingTop="20dp"
+        android:paddingRight="20dp"
+        android:paddingBottom="20dp"
         android:scrollbars="vertical" />
 
 

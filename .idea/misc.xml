@@ -3,17 +3,19 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/angel/AndroidStudioProjects/WakeApp/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.209" />
-        <entry key="..\:/Users/angel/AndroidStudioProjects/WakeApp/app/src/main/res/drawable/gradient.xml" value="0.18" />
-        <entry key="..\:/Users/angel/AndroidStudioProjects/WakeApp/app/src/main/res/drawable/ic_launcher_background.xml" value="0.209" />
-        <entry key="..\:/Users/angel/AndroidStudioProjects/WakeApp/app/src/main/res/layout/activity_alarm.xml" value="0.25" />
-        <entry key="..\:/Users/angel/AndroidStudioProjects/WakeApp/app/src/main/res/layout/activity_chrono.xml" value="0.25" />
-        <entry key="..\:/Users/angel/AndroidStudioProjects/WakeApp/app/src/main/res/layout/activity_new_alarm.xml" value="0.358695652173913" />
-        <entry key="..\:/Users/angel/AndroidStudioProjects/WakeApp/app/src/main/res/layout/alarm_list.xml" value="0.33" />
-        <entry key="..\:/Users/angel/AndroidStudioProjects/WakeApp/app/src/main/res/layout/fragment_alarm.xml" value="0.2015625" />
-        <entry key="..\:/Users/angel/AndroidStudioProjects/WakeApp/app/src/main/res/menu/alarm_menu.xml" value="0.5" />
-        <entry key="..\:/Users/angel/AndroidStudioProjects/WakeApp/app/src/main/res/menu/nav_menu.xml" value="0.14722222222222223" />
-        <entry key="..\:/Users/angel/AndroidStudioProjects/WakeApp/app/src/main/res/menu/new_alarm_menu.xml" value="0.33" />
+        <entry key="..\:/Users/angel/AndroidStudioProjects/WakeApp/app/src/main/res/layout/activity_alarm.xml" value="0.1" />
+        <entry key="..\:/Users/angel/AndroidStudioProjects/WakeApp/app/src/main/res/layout/activity_chrono.xml" value="0.358695652173913" />
+        <entry key="..\:/Users/angel/AndroidStudioProjects/WakeApp/app/src/main/res/layout/alarm_list.xml" value="0.358695652173913" />
+        <entry key="..\:/Users/marcu/Desktop/workspace/WakeApp/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1" />
+        <entry key="..\:/Users/marcu/Desktop/workspace/WakeApp/app/src/main/res/drawable/button_colors.xml" value="0.2585" />
+        <entry key="..\:/Users/marcu/Desktop/workspace/WakeApp/app/src/main/res/drawable/gradient.xml" value="0.191" />
+        <entry key="..\:/Users/marcu/Desktop/workspace/WakeApp/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
+        <entry key="..\:/Users/marcu/Desktop/workspace/WakeApp/app/src/main/res/drawable/ring.xml" value="0.191" />
+        <entry key="..\:/Users/marcu/Desktop/workspace/WakeApp/app/src/main/res/drawable/round_button.xml" value="0.1" />
+        <entry key="..\:/Users/marcu/Desktop/workspace/WakeApp/app/src/main/res/layout/activity_alarm.xml" value="0.17346014492753623" />
+        <entry key="..\:/Users/marcu/Desktop/workspace/WakeApp/app/src/main/res/layout/activity_chrono.xml" value="0.33" />
+        <entry key="..\:/Users/marcu/Desktop/workspace/WakeApp/app/src/main/res/layout/activity_new_alarm.xml" value="0.27447916666666666" />
+        <entry key="..\:/Users/marcu/Desktop/workspace/WakeApp/app/src/main/res/layout/alarm_list.xml" value="0.17346014492753623" />
       </map>
     </option>
   </component>
