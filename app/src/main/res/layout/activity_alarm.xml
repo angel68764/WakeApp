@@ -6,16 +6,17 @@
     android:layout_height="match_parent"
     tools:context=".AlarmActivity"
     android:id="@+id/container"
-    android:background="@drawable/gradient"
+    android:background="#000000"
     android:orientation="vertical">
 
     <TextView
         android:id="@+id/alarmListTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
         android:layout_marginLeft="10dp"
-        android:text="Lista de alarmas"
+        android:layout_marginTop="10dp"
+        android:text="Alarmas"
+        android:textColor="@color/white"
         android:textSize="40dp" />
 
 
@@ -32,14 +33,13 @@
         android:scrollbars="vertical" />
 
 
-
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_nav"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:menu="@menu/nav_menu"
         android:layout_alignParentBottom="true"
-        />
+        android:background="#ff4b0a"
+        app:menu="@menu/nav_menu" />
 
 
 

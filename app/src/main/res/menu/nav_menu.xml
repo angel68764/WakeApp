@@ -2,11 +2,12 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/alarmScreen"
-        android:icon="@android:drawable/ic_lock_idle_alarm"
+        android:icon="@drawable/alarm"
         android:title="Alarm" />
+
     <item
         android:id="@+id/chronoScreen"
-        android:icon="@android:drawable/ic_media_ff"
+        android:icon="@drawable/timer"
         android:title="Chronometer" />
 
 </menu>
