@@ -27,6 +27,8 @@ public class NewAlarmActivity extends AppCompatActivity {
         setContentView(R.layout.activity_new_alarm);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        this.setTitle("New alarm");
+
         alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
         alarmPicker = (TimePicker) findViewById(R.id.timePicker);
     }
