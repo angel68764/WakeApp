@@ -1,13 +1,22 @@
 <resources>
-    <string name="app_name">WakeApp</string>
+    <string name="app_name"><font fgcolor='#000000'>WakeApp</font></string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string-array name="days">
-        <item>Monday</item>
-        <item>Tuesday</item>
-        <item>Wednesday</item>
-        <item>Thursday</item>
-        <item>Friday</item>
-        <item>Saturday</item>
-        <item>Sunday</item>
+        <item>Mo</item>
+        <item>Tu</item>
+        <item>We</item>
+        <item>Th</item>
+        <item>Fr</item>
+        <item>Sa</item>
+        <item>Su</item>
 
     </string-array>
+
+    <string name="alarmTitle"><font fgcolor='#ff000000'>Alarm</font></string>
+    <string name="chronometerTitle"><font fgcolor='#ff000000'>Chronometer</font></string>
+    <string name="newAlarmTitle"><font fgcolor='#ff000000'>New alarm</font></string>
+    <string name="saveTitle"><font fgcolor='#ff000000'>SAVE</font></string>
+
+
 </resources>

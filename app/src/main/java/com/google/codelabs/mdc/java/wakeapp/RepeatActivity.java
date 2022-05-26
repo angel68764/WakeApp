@@ -7,12 +7,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.GridView;
+import android.widget.ListAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class RepeatActivity extends AppCompatActivity {
-    private RecyclerView recyclerView;
+    private GridView recyclerView;
     private RepeatAdapter repeatAdapter;
 
     @Override
@@ -20,21 +22,13 @@ public class RepeatActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_repeat);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
         this.setTitle("Repeat");
 
         final String[] repeat_days = getApplicationContext().getResources().getStringArray(R.array.days);
-        ArrayList<DayOfWeek> dayList = new ArrayList<>();
 
-        for (String day : repeat_days) {
-            DayOfWeek dayOfWeek = new DayOfWeek(day,false);
-            dayList.add(dayOfWeek);
-        }
-
-        recyclerView = (RecyclerView) findViewById(R.id.recyclerRepeatList);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        repeatAdapter = new RepeatAdapter(dayList);
-        recyclerView.setAdapter(repeatAdapter);
+        recyclerView = (GridView) findViewById(R.id.weekDays);
+        repeatAdapter = new RepeatAdapter(repeat_days, this);
+        recyclerView.setAdapter((ListAdapter) repeatAdapter);
     }
 
     @Override

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="SwitchStyle" parent="Theme.AppCompat.Light">
+        <item name="colorControlActivated">@color/orange</item>
+        <item name="android:colorForeground">#99ff4b0a</item>
+    </style>
+
+
+    <style name="MyTimePickerWidgetStyle" parent="@android:style/Widget.Material.TimePicker">
+        <item name="colorControlNormal">@color/white</item>
+    </style>
+
+</resources>
