@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.app.Activity;
 import android.app.Fragment;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -22,13 +23,24 @@ import com.google.android.material.navigation.NavigationBarView;
 import java.util.ArrayList;
 
 public class AlarmActivity extends AppCompatActivity {
-    ArrayList<Alarm> alarms = new ArrayList<>();
-    BottomNavigationView bottomNavigationView;
+    private ArrayList<Alarm> alarms = new ArrayList<>();
+    private BottomNavigationView bottomNavigationView;
+    private AlarmDB alarmDB;
+    private AlarmAdapter alarmAdapter;
+    private RecyclerView rwAlarms;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alarm);
+
+        initDatabase();
+
+        rwAlarms = findViewById(R.id.recyclerAlarmList);
+        alarmAdapter = new AlarmAdapter(alarms);
+        rwAlarms.setAdapter(alarmAdapter);
+        rwAlarms.setLayoutManager(new LinearLayoutManager(this));
+
         bottomNavigationView = findViewById(R.id.bottom_nav);
         bottomNavigationView.setSelectedItemId(R.id.alarmScreen);
 
@@ -51,20 +63,37 @@ public class AlarmActivity extends AppCompatActivity {
                 return false;
             }
         });
+    }
 
+    private void initDatabase() {
+        alarmDB = new AlarmDB(getApplicationContext());
+        Cursor alarmsFromDB = alarmDB.findAlarms();
 
-        RecyclerView rwAlarms = (RecyclerView) findViewById(R.id.recyclerAlarmList);
+        final int idIndex = alarmsFromDB.getColumnIndex(AlarmContract.AlarmEntry._ID);
+        final int nameIndex = alarmsFromDB.getColumnIndex(AlarmContract.AlarmEntry.NAME);
+        final int timeIndex = alarmsFromDB.getColumnIndex(AlarmContract.AlarmEntry.TIME);
+        final int activeIndex = alarmsFromDB.getColumnIndex(AlarmContract.AlarmEntry.ACTIVE);
 
-        for (int i = 1; i < 5; i++) {
-            Alarm alarm = new Alarm( "Alarma " + i, i + " : " + i, true);
+        alarms.clear();
+
+        while (alarmsFromDB.moveToNext()){
+            int idAlarm = alarmsFromDB.getInt(idIndex);
+            String nameAlarm = alarmsFromDB.getString(nameIndex);
+            String timeAlarm = alarmsFromDB.getString(timeIndex);
+
+            ArrayList<Boolean> daysWeek = new ArrayList<>();
+            for(int i = alarmsFromDB.getColumnIndex(AlarmContract.AlarmEntry.DAYWEEK[0]);
+                i <= alarmsFromDB.getColumnIndex(AlarmContract.AlarmEntry.DAYWEEK[AlarmContract.AlarmEntry.DAYWEEK.length-1]);
+                i++){
+                daysWeek.add(alarmsFromDB.getInt(i) > 0);
+            }
+
+            boolean activeAlarm = alarmsFromDB.getInt(activeIndex) > 0;
+
+            Alarm alarm = new Alarm(nameAlarm,timeAlarm,activeAlarm,daysWeek);
+            alarm.setId(idAlarm);
             alarms.add(alarm);
         }
-
-        AlarmAdapter alarmAdapter = new AlarmAdapter(alarms);
-
-        rwAlarms.setAdapter(alarmAdapter);
-
-        rwAlarms.setLayoutManager(new LinearLayoutManager(this));
 
     }
 
@@ -92,6 +121,16 @@ public class AlarmActivity extends AppCompatActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        initDatabase();
+
+        alarmAdapter.notifyDataSetChanged();
 
     }
 }

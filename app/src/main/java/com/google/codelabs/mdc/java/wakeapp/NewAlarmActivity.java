@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Locale;
 
@@ -50,7 +51,9 @@ public class NewAlarmActivity extends AppCompatActivity {
                 calendar.set(Calendar.MINUTE, alarmPicker.getMinute());
                 calendar.set(Calendar.SECOND, 0);
                 calendar.set(Calendar.MILLISECOND, 0);
+
                 Intent intent = new Intent(this,AlarmReceiver.class);
+
                 pendingIntent = PendingIntent.getBroadcast(this, 0, intent, 0);
 
                 String toastText = null;
@@ -59,6 +62,7 @@ public class NewAlarmActivity extends AppCompatActivity {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+
                 Toast.makeText(this, toastText, Toast.LENGTH_LONG).show();
 
                 //time = (calendar.getTimeInMillis() - (calendar.getTimeInMillis() % 60000));
@@ -70,6 +74,10 @@ public class NewAlarmActivity extends AppCompatActivity {
                         time = time + (1000 * 60 * 60 * 24);
                 }*/
 
+
+                AlarmDB alarmDB = new AlarmDB(getApplicationContext());
+                alarmDB.insertAlarm(new Alarm("alarma", alarmPicker.getHour() + ":" + alarmPicker.getMinute(),true,new ArrayList<Boolean>()));
+
                 alarmManager.setExact(AlarmManager.RTC_WAKEUP,calendar.getTimeInMillis(),pendingIntent);
                 finish();
                 return true;
@@ -78,4 +86,5 @@ public class NewAlarmActivity extends AppCompatActivity {
         }
 
     }
+
 }
