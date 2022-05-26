@@ -38,6 +38,13 @@ public class RepeatAdapter extends RecyclerView.Adapter<RepeatAdapter.ViewHolder
     public void onBindViewHolder(@NonNull RepeatAdapter.ViewHolder holder, int position) {
         holder.dayName.setText(mDays.get(position).getName());
         holder.dayCheck.setChecked(mDays.get(position).isActive());
+
+        holder.dayCheck.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
+                mDays.get(position).setActive(isChecked);
+            }
+        });
     }
 
     @Override
@@ -55,12 +62,7 @@ public class RepeatAdapter extends RecyclerView.Adapter<RepeatAdapter.ViewHolder
             dayName = (TextView) itemView.findViewById(R.id.dayName);
             dayCheck = (CheckBox) itemView.findViewById(R.id.dayCheck);
 
-            dayCheck.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                @Override
-                public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                    //mDays.get()
-                }
-            });
+
         }
     }
 }
