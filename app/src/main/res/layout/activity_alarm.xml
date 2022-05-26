@@ -38,7 +38,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="#ff4b0a"
+        android:background="@color/orange"
+        app:itemIconTint="@color/black"
         app:menu="@menu/nav_menu" />
 
 

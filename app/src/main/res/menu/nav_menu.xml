@@ -3,11 +3,12 @@
     <item
         android:id="@+id/alarmScreen"
         android:icon="@drawable/alarm"
-        android:title="Alarm" />
+        android:title="@string/alarmTitle" />
+
 
     <item
         android:id="@+id/chronoScreen"
         android:icon="@drawable/timer"
-        android:title="Chronometer" />
+        android:title="@string/chronometerTitle" />
 
 </menu>

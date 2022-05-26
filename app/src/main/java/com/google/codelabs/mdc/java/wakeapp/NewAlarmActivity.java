@@ -1,18 +1,25 @@
 package com.google.codelabs.mdc.java.wakeapp;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Intent;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.format.DateUtils;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.GridView;
 import android.widget.TimePicker;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Locale;
 
@@ -20,17 +27,24 @@ public class NewAlarmActivity extends AppCompatActivity {
     private TimePicker alarmPicker;
     private AlarmManager alarmManager;
     private PendingIntent pendingIntent;
-
+    private GridView recyclerView;
+    private RepeatAdapter repeatAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_alarm);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        this.setTitle("New alarm");
+        final Drawable upArrow = getResources().getDrawable(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
+        upArrow.setColorFilter(getResources().getColor(R.color.black), PorterDuff.Mode.SRC_ATOP);
+
 
         alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
         alarmPicker = (TimePicker) findViewById(R.id.timePicker);
+        final String[] repeat_days = getApplicationContext().getResources().getStringArray(R.array.days);
+
+        recyclerView = (GridView) findViewById(R.id.weekDays);
+        repeatAdapter = new RepeatAdapter(repeat_days, this);
+        recyclerView.setAdapter(repeatAdapter);
     }
 
     @Override

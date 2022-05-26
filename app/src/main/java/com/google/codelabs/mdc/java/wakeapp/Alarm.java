@@ -5,6 +5,7 @@ public class Alarm {
     private String time;
     private boolean active;
 
+
     public Alarm(String name, String time, boolean active) {
         this.name = name;
         this.time = time;
