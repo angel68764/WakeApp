@@ -16,9 +16,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.WakeApp"
         tools:targetApi="31">
-        <activity
-            android:name=".RepeatActivity"
-            android:exported="false" />
 
         <receiver
             android:name=".AlarmReceiver"
