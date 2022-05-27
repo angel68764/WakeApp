@@ -78,7 +78,7 @@ public class Alarm {
         Log.i("cancel", toastText);
     }
 
-    public void schedule(Context context) {
+    public void scheduleAlarm(Context context) {
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
 
         Intent intent = new Intent(context, AlarmReceiver.class);

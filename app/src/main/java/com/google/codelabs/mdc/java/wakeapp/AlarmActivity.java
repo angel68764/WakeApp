@@ -37,7 +37,7 @@ public class AlarmActivity extends AppCompatActivity {
         initDatabase();
 
         rwAlarms = findViewById(R.id.recyclerAlarmList);
-        alarmAdapter = new AlarmAdapter(alarms);
+        alarmAdapter = new AlarmAdapter(alarms, this);
         rwAlarms.setAdapter(alarmAdapter);
         rwAlarms.setLayoutManager(new LinearLayoutManager(this));
 

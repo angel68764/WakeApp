@@ -70,7 +70,7 @@ public class NewAlarmActivity extends AppCompatActivity {
                 long alarmId = alarmDB.insertAlarm(alarm);
 
                 alarm.setId((int) alarmId);
-                alarm.schedule(getApplicationContext());
+                alarm.scheduleAlarm(getApplicationContext());
                 finish();
                 /*
                 Calendar calendar = Calendar.getInstance();

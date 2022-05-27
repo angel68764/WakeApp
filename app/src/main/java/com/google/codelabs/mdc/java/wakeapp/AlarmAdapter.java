@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.TextView;
 
@@ -15,9 +16,11 @@ import java.util.List;
 
 public class AlarmAdapter extends RecyclerView.Adapter<AlarmAdapter.ViewHolder> {
     private ArrayList<Alarm> mAlarms;
+    private Context context;
 
-    public AlarmAdapter(ArrayList<Alarm> mAlarms) {
+    public AlarmAdapter(ArrayList<Alarm> mAlarms, Context context) {
         this.mAlarms = mAlarms;
+        this.context = context;
     }
 
     public void setmAlarms(ArrayList<Alarm> mAlarms) {
@@ -44,6 +47,23 @@ public class AlarmAdapter extends RecyclerView.Adapter<AlarmAdapter.ViewHolder> 
         holder.alarmName.setText(alarm.getName());
         holder.alarmTime.setText(alarm.getTime());
         holder.alarmActive.setChecked(alarm.isActive());
+
+        holder.alarmActive.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
+                alarm.setActive(isChecked);
+                AlarmDB alarmDB = new AlarmDB(context);
+
+                if(alarm.isActive()) {
+                    alarm.scheduleAlarm(context);
+                    alarmDB.updateAlarm(alarm);
+                }
+                else {
+                    alarm.cancelAlarm(context);
+                    alarmDB.updateAlarm(alarm);
+                }
+            }
+        });
     }
 
     @Override

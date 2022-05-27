@@ -23,7 +23,7 @@ public class RescheduleAlarmsService extends LifecycleService {
 
         for (Alarm a : alarms) {
             if (a.isActive()) {
-                a.schedule(getApplicationContext());
+                a.scheduleAlarm(getApplicationContext());
             }
         }
 
