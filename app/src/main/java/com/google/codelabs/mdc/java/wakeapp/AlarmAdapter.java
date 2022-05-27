@@ -55,6 +55,7 @@ public class AlarmAdapter extends RecyclerView.Adapter<AlarmAdapter.ViewHolder> 
 
         alarmTime = ejemplo[0] + ":" + ejemplo[1];
         holder.alarmTime.setText(alarmTime);
+        holder.daysActive.setText(alarm.getRecurringDaysText());
         holder.alarmActive.setChecked(alarm.isActive());
 
         holder.alarmActive.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -83,6 +84,7 @@ public class AlarmAdapter extends RecyclerView.Adapter<AlarmAdapter.ViewHolder> 
     public class ViewHolder extends RecyclerView.ViewHolder {
         private TextView alarmName;
         private TextView alarmTime;
+        private TextView daysActive;
         private Switch alarmActive;
 
         public ViewHolder(@NonNull View itemView) {
@@ -90,6 +92,7 @@ public class AlarmAdapter extends RecyclerView.Adapter<AlarmAdapter.ViewHolder> 
 
             alarmName = (TextView) itemView.findViewById(R.id.alarmName);
             alarmTime = (TextView) itemView.findViewById(R.id.alarmTime);
+            daysActive = (TextView) itemView.findViewById(R.id.daysActive);
             alarmActive = (Switch) itemView.findViewById(R.id.alarmActive);
         }
     }

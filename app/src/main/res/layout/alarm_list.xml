@@ -31,6 +31,13 @@
 
         </LinearLayout>
 
+        <TextView
+            android:id="@+id/daysActive"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="days"
+            android:layout_gravity="bottom"/>
+
         <View android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1" />
