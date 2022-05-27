@@ -16,6 +16,7 @@ import android.text.format.DateUtils;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -31,6 +32,7 @@ public class NewAlarmActivity extends AppCompatActivity {
     private AlarmManager alarmManager;
     //private PendingIntent pendingIntent;
     private GridView recyclerView;
+    private EditText alarmTitle;
     private RepeatAdapter repeatAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +47,7 @@ public class NewAlarmActivity extends AppCompatActivity {
 
         alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
         alarmPicker = (TimePicker) findViewById(R.id.timePicker);
+        alarmTitle = (EditText) findViewById(R.id.alarmTitle);
         final String[] repeat_days = getApplicationContext().getResources().getStringArray(R.array.days);
 
         recyclerView = (GridView) findViewById(R.id.weekDays);
@@ -66,7 +69,7 @@ public class NewAlarmActivity extends AppCompatActivity {
             case R.id.saveAlarm:
 
                 AlarmDB alarmDB = new AlarmDB(getApplicationContext());
-                Alarm alarm = new Alarm("alarma", alarmPicker.getHour() + ":" + alarmPicker.getMinute(),true,repeatAdapter.getSelectedWeekDays());
+                Alarm alarm = new Alarm(alarmTitle.getText().toString(), alarmPicker.getHour() + ":" + alarmPicker.getMinute(),true,repeatAdapter.getSelectedWeekDays());
                 long alarmId = alarmDB.insertAlarm(alarm);
 
                 alarm.setId((int) alarmId);

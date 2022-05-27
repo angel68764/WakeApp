@@ -9,12 +9,38 @@
     android:orientation="vertical"
     tools:context=".NewAlarmActivity">
 
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/mainLayout"
+        android:descendantFocusability="beforeDescendants"
+        android:focusableInTouchMode="true" >
+
+
+
+        <EditText
+            android:id="@+id/alarmTitle"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginBottom="50dp"
+            android:clickable="true"
+            android:focusedByDefault="false"
+            android:paddingRight="10dp"
+            android:paddingLeft="10dp"
+            android:inputType="none"
+            android:text="Alarm"
+            android:textColor="@color/white"
+            android:textColorHighlight="@color/orange"
+            android:textColorLink="@color/orange" />
+
+    </RelativeLayout>
+
     <TimePicker
         android:id="@+id/timePicker"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
-        android:layout_marginBottom="130dp"
+        android:layout_marginBottom="50dp"
         android:layout_gravity="center"
         android:headerBackground="@color/black"
         android:numbersSelectorColor="@color/orange"
