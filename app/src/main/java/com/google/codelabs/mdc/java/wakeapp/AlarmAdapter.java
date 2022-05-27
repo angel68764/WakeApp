@@ -61,16 +61,17 @@ public class AlarmAdapter extends RecyclerView.Adapter<AlarmAdapter.ViewHolder> 
         holder.alarmActive.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
-                alarm.setActive(isChecked);
-                AlarmDB alarmDB = new AlarmDB(context);
+                if(compoundButton.isPressed()) {
+                    alarm.setActive(isChecked);
+                    AlarmDB alarmDB = new AlarmDB(context);
 
-                if(alarm.isActive()) {
-                    alarm.scheduleAlarm(context);
-                    alarmDB.updateAlarm(alarm);
-                }
-                else {
-                    alarm.cancelAlarm(context);
-                    alarmDB.updateAlarm(alarm);
+                    if (alarm.isActive()) {
+                        alarm.scheduleAlarm(context);
+                        alarmDB.updateAlarm(alarm);
+                    } else {
+                        alarm.cancelAlarm(context);
+                        alarmDB.updateAlarm(alarm);
+                    }
                 }
             }
         });

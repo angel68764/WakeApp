@@ -68,49 +68,9 @@ public class AlarmActivity extends AppCompatActivity {
 
     private void initDatabase() {
         alarmDB = new AlarmDB(getApplicationContext());
-        //alarms.clear();
         alarms = alarmDB.findAlarms();
 
-        /*
-        alarmDB = new AlarmDB(getApplicationContext());
-        Cursor alarmsFromDB = alarmDB.findAlarms();
-
-        final int idIndex = alarmsFromDB.getColumnIndex(AlarmContract.AlarmEntry._ID);
-        final int nameIndex = alarmsFromDB.getColumnIndex(AlarmContract.AlarmEntry.NAME);
-        final int timeIndex = alarmsFromDB.getColumnIndex(AlarmContract.AlarmEntry.TIME);
-        final int activeIndex = alarmsFromDB.getColumnIndex(AlarmContract.AlarmEntry.ACTIVE);
-
-        alarms.clear();
-
-        while (alarmsFromDB.moveToNext()){
-            int idAlarm = alarmsFromDB.getInt(idIndex);
-            String nameAlarm = alarmsFromDB.getString(nameIndex);
-            String timeAlarm = alarmsFromDB.getString(timeIndex);
-
-            ArrayList<Boolean> daysWeek = new ArrayList<>();
-            for(int i = alarmsFromDB.getColumnIndex(AlarmContract.AlarmEntry.DAYWEEK[0]);
-                i <= alarmsFromDB.getColumnIndex(AlarmContract.AlarmEntry.DAYWEEK[AlarmContract.AlarmEntry.DAYWEEK.length-1]);
-                i++){
-                daysWeek.add(alarmsFromDB.getInt(i) > 0);
-            }
-
-            boolean activeAlarm = alarmsFromDB.getInt(activeIndex) > 0;
-
-            Alarm alarm = new Alarm(nameAlarm,timeAlarm,activeAlarm,daysWeek);
-            alarm.setId(idAlarm);
-            alarms.add(alarm);
-        }*/
-
     }
-
-    /*private void openFragment(Fragment fragment) {
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        //this is a helper class that replaces the container with the fragment. You can replace or add fragments.
-        transaction.replace(R.id.container, fragment)
-        transaction.addToBackStack(null); //if you add fragments it will be added to the backStack. If you replace the fragment it will add only the last fragment
-        transaction.commit(); // commit() performs the action
-    }*/
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

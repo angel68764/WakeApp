@@ -53,16 +53,6 @@ public class ChronoActivity extends AppCompatActivity {
         chronometer.setFormat("%s");
         chronometer.setBase(SystemClock.elapsedRealtime());
 
-        chronometer.setOnChronometerTickListener(new Chronometer.OnChronometerTickListener() {
-            @Override
-            public void onChronometerTick(Chronometer chronometer) {
-                /*if ((SystemClock.elapsedRealtime() - chronometer.getBase()) >= 10000) {
-                    chronometer.setBase(SystemClock.elapsedRealtime());
-                    Toast.makeText(ChronoActivity.this, "Bing!", Toast.LENGTH_SHORT).show();
-                }*/
-            }
-        });
-
         View pauseButton = findViewById(R.id.button2);
         View restoreButton = findViewById(R.id.button3);
         restoreButton.setVisibility(View.INVISIBLE);

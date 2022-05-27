@@ -75,7 +75,6 @@ public class Alarm {
 
         String toastText = String.format("Alarm cancelled for %s with id %d", time, id);
         Toast.makeText(context, toastText, Toast.LENGTH_SHORT).show();
-        Log.i("cancel", toastText);
     }
 
     public void scheduleAlarm(Context context) {

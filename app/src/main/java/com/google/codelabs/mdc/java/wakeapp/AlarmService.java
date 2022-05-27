@@ -45,30 +45,20 @@ public class AlarmService extends Service {
         Intent notificationIntent = new Intent(this,SnoozeActivity.class);
         PendingIntent pendingIntent = PendingIntent.getActivity(this,0,notificationIntent,0);
 
-        String alarmTitle = String.format("new Alarm");
+        String alarmTitle = intent.getStringExtra("name");
 
         Notification notification = new NotificationCompat.Builder(this, "ALARM_SERVICE_CHANNEL")
                 .setContentTitle(alarmTitle)
-                .setContentText("Ring Ring .. Ring Ring")
+                .setContentText("Ding Dong .. Wake up!!")
                 .setSmallIcon(R.drawable.gradient)
                 .setContentIntent(pendingIntent)
                 .build();
 
-
         vibrator.vibrate(4000);
-
-        // setting default ringtone
 
 
         // play ringtone
         ringtone.play();
-
-        /*mediaPlayer.start();
-
-        long[] pattern = { 0, 100, 1000 };
-        vibrator.vibrate(pattern, 0);
-
-         */
 
         startForeground(1, notification);
 

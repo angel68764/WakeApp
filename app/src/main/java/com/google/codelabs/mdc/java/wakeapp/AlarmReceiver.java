@@ -19,12 +19,12 @@ public class AlarmReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         if (Intent.ACTION_BOOT_COMPLETED.equals(intent.getAction())) {
-            String toastText = String.format("Alarm Reboot");
+            String toastText = "Alarm Reboot";
             Toast.makeText(context, toastText, Toast.LENGTH_SHORT).show();
             startRescheduleAlarmsService(context);
         }
         else {
-            String toastText = String.format("Alarm Received");
+            String toastText = "Alarm Received";
             Toast.makeText(context, toastText, Toast.LENGTH_SHORT).show();
             listDays = (ArrayList<Boolean>) intent.getSerializableExtra("days");
             boolean recurrent = false;
@@ -41,26 +41,6 @@ public class AlarmReceiver extends BroadcastReceiver {
                 }
             }
         }
-
-        /*if (!Intent.ACTION_BOOT_COMPLETED.equals(intent.getAction())) {
-            String toastText = String.format("Alarm Received");
-            Toast.makeText(context, toastText, Toast.LENGTH_SHORT).show();
-            startAlarmService(context, intent);
-        }*/
-        /*Vibrator vibrator = (Vibrator) context.getSystemService(context.VIBRATOR_SERVICE);
-        vibrator.vibrate(4000);
-
-        Toast.makeText(context, "Alarm! Wake up! Wake up!", Toast.LENGTH_LONG).show();
-        Uri alarmUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM);
-        if (alarmUri == null) {
-            alarmUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
-        }
-
-        // setting default ringtone
-        Ringtone ringtone = RingtoneManager.getRingtone(context, alarmUri);
-
-        // play ringtone
-        ringtone.play();*/
     }
 
     private boolean alarmIsToday(Intent intent) {
