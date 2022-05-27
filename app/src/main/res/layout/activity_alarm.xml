@@ -30,6 +30,7 @@
         android:paddingTop="20dp"
         android:paddingRight="20dp"
         android:paddingBottom="20dp"
+        android:layout_above="@+id/bottom_nav"
         android:scrollbars="vertical" />
 
 

@@ -57,6 +57,7 @@ public class AlarmActivity extends AppCompatActivity {
                         finish();
                         startActivity(new Intent(getApplicationContext(),AlarmActivity.class));
                         overridePendingTransition(0,0);
+
                         return true;
 
                 }

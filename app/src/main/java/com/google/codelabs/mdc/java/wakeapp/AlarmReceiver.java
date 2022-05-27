@@ -27,7 +27,13 @@ public class AlarmReceiver extends BroadcastReceiver {
             String toastText = String.format("Alarm Received");
             Toast.makeText(context, toastText, Toast.LENGTH_SHORT).show();
             listDays = (ArrayList<Boolean>) intent.getSerializableExtra("days");
-            if (!listDays.isEmpty()) {
+            boolean recurrent = false;
+            for (boolean value: listDays) {
+                if (value){
+                    recurrent = true;
+                }
+            }
+            if (!recurrent) {
                 startAlarmService(context, intent);
             } {
                 if (alarmIsToday(intent)) {
@@ -64,31 +70,31 @@ public class AlarmReceiver extends BroadcastReceiver {
 
         switch(today) {
             case Calendar.MONDAY:
-                if(listDays.get(1))
+                if(listDays.get(0))
                     return true;
                 return false;
             case Calendar.TUESDAY:
-                if(listDays.get(2))
+                if(listDays.get(1))
                     return true;
                 return false;
             case Calendar.WEDNESDAY:
-                if(listDays.get(3))
+                if(listDays.get(2))
                     return true;
                 return false;
             case Calendar.THURSDAY:
-                if(listDays.get(4))
+                if(listDays.get(3))
                     return true;
                 return false;
             case Calendar.FRIDAY:
-                if(listDays.get(5))
+                if(listDays.get(4))
                     return true;
                 return false;
             case Calendar.SATURDAY:
-                if(listDays.get(6))
+                if(listDays.get(5))
                     return true;
                 return false;
             case Calendar.SUNDAY:
-                if(listDays.get(7))
+                if(listDays.get(6))
                     return true;
                 return false;
         }

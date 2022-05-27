@@ -99,10 +99,17 @@ public class Alarm {
             calendar.set(Calendar.DAY_OF_MONTH, calendar.get(Calendar.DAY_OF_MONTH) + 1);
         }
 
-        if (!daysActive.isEmpty()) {
+        boolean recurrent = false;
+        for (boolean value: daysActive) {
+            if (value){
+                recurrent = true;
+            }
+        }
+
+        if (!recurrent) {
             String toastText = null;
             try {
-                toastText = String.format("One Time Alarm %s scheduled for %s at %02d:%02d", name, calendar.getDisplayName(Calendar.DAY_OF_WEEK,Calendar.LONG, Locale.getDefault()), times[0], times[1], id);
+                toastText = String.format("One Time Alarm %s scheduled for %s at %02d:%02d", name, calendar.getDisplayName(Calendar.DAY_OF_WEEK,Calendar.LONG, Locale.getDefault()), Integer.valueOf(times[0]), Integer.valueOf(times[1]), id);
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -114,7 +121,7 @@ public class Alarm {
                     alarmPendingIntent
             );
         } else {
-            String toastText = String.format("Recurring Alarm %s scheduled for %s at %02d:%02d", name, getRecurringDaysText(), times[0], times[1], id);
+            String toastText = String.format("Recurring Alarm %s scheduled for %s at %02d:%02d", name, getRecurringDaysText(), Integer.valueOf(times[0]), Integer.valueOf(times[1]), id);
             Toast.makeText(context, toastText, Toast.LENGTH_LONG).show();
 
             final long RUN_DAILY = 24 * 60 * 60 * 1000;
