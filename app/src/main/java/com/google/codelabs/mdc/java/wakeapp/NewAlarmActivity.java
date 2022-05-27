@@ -24,11 +24,12 @@ import android.widget.Toolbar;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Locale;
+import java.util.Random;
 
 public class NewAlarmActivity extends AppCompatActivity {
     private TimePicker alarmPicker;
     private AlarmManager alarmManager;
-    private PendingIntent pendingIntent;
+    //private PendingIntent pendingIntent;
     private GridView recyclerView;
     private RepeatAdapter repeatAdapter;
     @Override
@@ -63,13 +64,22 @@ public class NewAlarmActivity extends AppCompatActivity {
         long time;
         switch (item.getItemId()){
             case R.id.saveAlarm:
+
+                AlarmDB alarmDB = new AlarmDB(getApplicationContext());
+                Alarm alarm = new Alarm("alarma", alarmPicker.getHour() + ":" + alarmPicker.getMinute(),true,repeatAdapter.getSelectedWeekDays());
+                long alarmId = alarmDB.insertAlarm(alarm);
+
+                alarm.setId((int) alarmId);
+                alarm.schedule(getApplicationContext());
+                finish();
+                /*
                 Calendar calendar = Calendar.getInstance();
-                calendar.setTimeInMillis(System.currentTimeMillis());
+                //calendar.setTimeInMillis(System.currentTimeMillis());
                 calendar.set(Calendar.HOUR_OF_DAY, alarmPicker.getHour());
                 calendar.set(Calendar.MINUTE, alarmPicker.getMinute());
                 calendar.set(Calendar.DAY_OF_WEEK,Calendar.THURSDAY);
-                /*calendar.set(Calendar.SECOND, 0);
-                calendar.set(Calendar.MILLISECOND, 0);*/
+                calendar.set(Calendar.SECOND, 0);
+                calendar.set(Calendar.MILLISECOND, 0);
 
                 Intent intent = new Intent(this,AlarmReceiver.class);
 
@@ -93,13 +103,14 @@ public class NewAlarmActivity extends AppCompatActivity {
                         time = time + (1000 * 60 * 60 * 24);
                 }*/
 
-
+/*
                 AlarmDB alarmDB = new AlarmDB(getApplicationContext());
                 alarmDB.insertAlarm(new Alarm("alarma", alarmPicker.getHour() + ":" + alarmPicker.getMinute(),true,repeatAdapter.getSelectedWeekDays()));
 
-                //alarmManager.setExact(AlarmManager.RTC_WAKEUP,calendar.getTimeInMillis(),pendingIntent);
-                alarmManager.setRepeating(AlarmManager.RTC_WAKEUP,calendar.getTimeInMillis(), 24 * 60 * 60 * 1000, pendingIntent);
+                alarmManager.setExact(AlarmManager.RTC_WAKEUP,calendar.getTimeInMillis(),pendingIntent);
+                //alarmManager.setRepeating(AlarmManager.RTC_WAKEUP,calendar.getTimeInMillis(), 24 * 60 * 60 * 1000, pendingIntent);
                 finish();
+                */
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

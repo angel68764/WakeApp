@@ -67,6 +67,11 @@ public class AlarmActivity extends AppCompatActivity {
 
     private void initDatabase() {
         alarmDB = new AlarmDB(getApplicationContext());
+        //alarms.clear();
+        alarms = alarmDB.findAlarms();
+
+        /*
+        alarmDB = new AlarmDB(getApplicationContext());
         Cursor alarmsFromDB = alarmDB.findAlarms();
 
         final int idIndex = alarmsFromDB.getColumnIndex(AlarmContract.AlarmEntry._ID);
@@ -93,7 +98,7 @@ public class AlarmActivity extends AppCompatActivity {
             Alarm alarm = new Alarm(nameAlarm,timeAlarm,activeAlarm,daysWeek);
             alarm.setId(idAlarm);
             alarms.add(alarm);
-        }
+        }*/
 
     }
 
@@ -104,6 +109,7 @@ public class AlarmActivity extends AppCompatActivity {
         transaction.addToBackStack(null); //if you add fragments it will be added to the backStack. If you replace the fragment it will add only the last fragment
         transaction.commit(); // commit() performs the action
     }*/
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -129,6 +135,8 @@ public class AlarmActivity extends AppCompatActivity {
         super.onResume();
 
         initDatabase();
+
+        alarmAdapter.setmAlarms(alarms);
 
         alarmAdapter.notifyDataSetChanged();
 

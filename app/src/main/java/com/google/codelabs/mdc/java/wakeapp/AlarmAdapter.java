@@ -10,15 +10,19 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class AlarmAdapter extends RecyclerView.Adapter<AlarmAdapter.ViewHolder> {
-    private List<Alarm> mAlarms;
+    private ArrayList<Alarm> mAlarms;
 
-    public AlarmAdapter(List<Alarm> mAlarms) {
+    public AlarmAdapter(ArrayList<Alarm> mAlarms) {
         this.mAlarms = mAlarms;
     }
 
+    public void setmAlarms(ArrayList<Alarm> mAlarms) {
+        this.mAlarms = mAlarms;
+    }
 
     @NonNull
     @Override

@@ -63,10 +63,37 @@ public class AlarmDB extends SQLiteOpenHelper {
         return newRowId;
     }
 
-    public Cursor findAlarms(){
+    public ArrayList<Alarm> findAlarms(){
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery( "select * from "+ AlarmContract.AlarmEntry.TABLE_NAME, null );
 
-        return cursor;
+        final int idIndex = cursor.getColumnIndex(AlarmContract.AlarmEntry._ID);
+        final int nameIndex = cursor.getColumnIndex(AlarmContract.AlarmEntry.NAME);
+        final int timeIndex = cursor.getColumnIndex(AlarmContract.AlarmEntry.TIME);
+        final int activeIndex = cursor.getColumnIndex(AlarmContract.AlarmEntry.ACTIVE);
+
+        ArrayList<Alarm> alarms = new ArrayList<>();
+        //alarms.clear();
+
+        while (cursor.moveToNext()){
+            int idAlarm = cursor.getInt(idIndex);
+            String nameAlarm = cursor.getString(nameIndex);
+            String timeAlarm = cursor.getString(timeIndex);
+
+            ArrayList<Boolean> daysWeek = new ArrayList<>();
+            for(int i = cursor.getColumnIndex(AlarmContract.AlarmEntry.DAYWEEK[0]);
+                i <= cursor.getColumnIndex(AlarmContract.AlarmEntry.DAYWEEK[AlarmContract.AlarmEntry.DAYWEEK.length-1]);
+                i++){
+                daysWeek.add(cursor.getInt(i) > 0);
+            }
+
+            boolean activeAlarm = cursor.getInt(activeIndex) > 0;
+
+            Alarm alarm = new Alarm(nameAlarm,timeAlarm,activeAlarm,daysWeek);
+            alarm.setId(idAlarm);
+            alarms.add(alarm);
+        }
+
+        return alarms;
     }
 }
