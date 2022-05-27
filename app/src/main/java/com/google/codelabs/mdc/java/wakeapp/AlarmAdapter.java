@@ -43,9 +43,18 @@ public class AlarmAdapter extends RecyclerView.Adapter<AlarmAdapter.ViewHolder> 
     @Override
     public void onBindViewHolder(AlarmAdapter.ViewHolder holder, int position) {
         Alarm alarm = mAlarms.get(position);
-
+        String alarmTime;
         holder.alarmName.setText(alarm.getName());
-        holder.alarmTime.setText(alarm.getTime());
+        String[] ejemplo = alarm.getTime().split(":");
+        if(ejemplo[0].length() == 1){
+            ejemplo[0] = "0" + ejemplo[0];
+        }
+        if(ejemplo[1].length() == 1){
+            ejemplo[1] = "0" + ejemplo[1];
+        }
+
+        alarmTime = ejemplo[0] + ":" + ejemplo[1];
+        holder.alarmTime.setText(alarmTime);
         holder.alarmActive.setChecked(alarm.isActive());
 
         holder.alarmActive.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
